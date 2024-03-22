@@ -1,5 +1,5 @@
 {% extends 'hotel/index.html' %}
-{% block body %}
+{% block content %}
 <div class = "container mb-3">
     {% if request.user.is_authenticated %}
         <form method="POST" action="{% url 'booking_form' %}">
@@ -20,4 +20,4 @@
         <h1>You are not authenticated!!!</h1>
     {% endif %}
 </div>
-{% endblock body %}
+{% endblock %}
