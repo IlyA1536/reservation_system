@@ -1,14 +1,23 @@
 {% extends 'hotel/index.html' %}
 {% block body %}
-<div class = "container">
     <h1>Rooms:</h1>
-    <ul>
-        {% for room in rooms %}
-            <li>
-                {{ room.number }}
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
-</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for room in rooms %}
+        <tr>
+            <th>{{ room.number }}</th>
+            <th>{{ room.capacity }}</th>
+            <th>{{ room.location }}</th>
+        </tr>
+        <br>
+    {% endfor %}
+    </tbody>
+</table>
 {% endblock body %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from hotel.models import *
 from django.http import HttpResponse
+from auth_system.models import CustomUser
 
 
 def get_rooms_list(request):
@@ -17,7 +18,7 @@ def get_rooms_list(request):
     )
 
 def get_users_list(request):
-    users = User.objects.all()
+    users = CustomUser.objects.all()
 
     context = {
         "users" : users
@@ -30,7 +31,7 @@ def get_users_list(request):
     )
 
 def room_detail(request, pk:int):
-    room = Room.objects.all()
+    room = Room.objects.get(id=pk)
 
     context = {
         "room" : room
@@ -43,7 +44,7 @@ def room_detail(request, pk:int):
     )
 
 def booking_detail(request, pk:int):
-    booking = Booking.objects.all()
+    booking = Booking.objects.get(id=pk)
 
     context = {
         "booking" : booking
