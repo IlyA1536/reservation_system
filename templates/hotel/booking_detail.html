@@ -1,0 +1,17 @@
+{% extends 'hotel/index.html' %}
+{% block body %}
+<div class="container">
+    <h1>Room detail:</h1>
+    <ul>
+        <h2>Room number: {{ booking.room.number }}</h2>
+        <br>
+        <h2>User: {{ booking.user }}</h2>
+        <br>
+        <h2>Start time: {{ booking.start_time }}</h2>
+        <br>
+        <h2>End time: {{ booking.end_time }}</h2>
+        <br>
+        <h2>Created at: {{ booking.created_at }}</h2>
+    </ul>
+</div>
+{% endblock body %}

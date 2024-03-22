@@ -1,0 +1,23 @@
+{% extends 'hotel/index.html' %}
+{% block body %}
+<div class = "container mb-3">
+    {% if request.user.is_authenticated %}
+        <form method="POST" action="{% url 'booking_form' %}">
+        {% csrf_token %}
+            <label class="form-label"> Room number: </label>
+            <input class="form-control" type="text" id="room_number" name="room_number": ></input>
+            <br>
+            <label class="form-label"> Start time: </label>
+            <input class="form-control" type="datetime-local" id="start_time" name="start_time": ></input>
+            <br>
+            <label class="form-label"> End time: </label>
+            <input class="form-control" type="datetime-local" id="end_time" name="end_time": ></input>
+            <br>
+            <br>
+            <button class = "border-button" type="submit">Book room</button>
+        </form>
+    {% else %}
+        <h1>You are not authenticated!!!</h1>
+    {% endif %}
+</div>
+{% endblock body %}
