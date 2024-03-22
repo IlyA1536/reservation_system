@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from hotel.models import *
+from .models import Room, Booking
 from django.http import HttpResponse
 from auth_system.models import CustomUser
 
