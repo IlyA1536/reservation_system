@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from auth_system.models import CustomUser
 
 
+def home(request):
+    return render(request, 'hotel/home.html')
+
 def get_rooms_list(request):
     rooms = Room.objects.all()
 

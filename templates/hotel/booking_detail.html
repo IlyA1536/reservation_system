@@ -1,6 +1,9 @@
 {% extends 'hotel/index.html' %}
 {% block content %}
 <div class="container">
+    <div class="alert alert-success" role="alert">
+        The room was successfully booked!
+    </div>
     <h1>Room detail:</h1>
     <ul>
         <h2>Room number: {{ booking.room.number }}</h2>

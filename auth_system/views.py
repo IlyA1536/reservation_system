@@ -5,7 +5,7 @@ from django.contrib import messages
 from .forms import CustomUserCreationForm
 
 
-def register(request):
+def signup(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -17,7 +17,7 @@ def register(request):
 
     return render(
         request,
-        'auth_system/register.html',
+        'auth_system/signup.html',
         context={'form' : form}
     )
 
