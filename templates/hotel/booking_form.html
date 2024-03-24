@@ -20,39 +20,4 @@
         <h1>You are not authenticated!!!</h1>
     {% endif %}
 </div>
-
-<style>
-    .calendar {
-        display: flex;
-        flex-wrap: wrap;
-        width: 350px; /* Або будь-яка інша ширина, в залежності від розміру квадратиків */
-    }
-
-    .day {
-        width: 45px; /* Ширина квадратика */
-        height: 45px; /* Висота квадратика */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 2px;
-        border-radius: 5px; /* Закруглення країв */
-    }
-
-    .free {
-        background-color: lightgreen; /* Колір для вільних днів */
-    }
-
-    .booked {
-        background-color: lightcoral; /* Колір для зайнятих днів */
-    }
-</style>
-
-<h2>Доступність кімнати №{{ room.number }} на {{ today|date:"F Y" }}</h2>
-    <div class="calendar">
-        {% for day in days_of_month %}
-            <div class="day {% if day in booked_days %}booked{% else %}free{% endif %}">
-                {{ day }}
-            </div>
-        {% endfor %}
-    </div>
 {% endblock %}
