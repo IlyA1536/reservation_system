@@ -1,13 +1,13 @@
 {% extends 'hotel/index.html' %}
-{% block content %}
+{% block body %}
     <h1>Rooms:</h1>
-<table class="table table-primary table-striped-columns">
+<table class="table">
     <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Capacity</th>
-            <th scope="col">Location</th>
-        </tr>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Location</th>
+    </tr>
     </thead>
     <tbody>
     {% for room in rooms %}
@@ -16,7 +16,8 @@
             <th>{{ room.capacity }}</th>
             <th>{{ room.location }}</th>
         </tr>
+        <br>
     {% endfor %}
     </tbody>
 </table>
-{% endblock %}
+{% endblock body %}

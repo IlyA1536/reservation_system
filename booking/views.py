@@ -1,14 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Room, Booking
 from django.http import HttpResponse
 from auth_system.models import CustomUser
-from django.utils import timezone
-import datetime
-from calendar import monthrange
 
-
-def home(request):
-    return render(request, 'hotel/home.html')
 
 def get_rooms_list(request):
     rooms = Room.objects.all()
@@ -62,33 +56,16 @@ def booking_detail(request, pk:int):
         context,
     )
 
-def booking_form(request, pk:int):
+def booking_form(request):
     if request.method == 'GET':
-        if request.user.is_authenticated:
-            room = get_object_or_404(Room, pk=pk)
-            today = timezone.now()
-            first_day_of_month = datetime.date(today.year, today.month, 1)
-            last_day_of_month = datetime.date(today.year, today.month, monthrange(today.year, today.month)[1])
-            bookings = Booking.objects.filter(room=room, start_time__range= (first_day_of_month, last_day_of_month))
-            booked_days = []
-            for booking in bookings:
-                for i in range(booking.start_time.day, booking.end_time.day + 1 ):
-                    booked_days.append(i)
-            days_of_month = range(1, monthrange(today.year, today.month)[1] + 1)
-            context = {
-                'room': room,
-                'days_of_month': days_of_month,
-                'booked_days': booked_days,
-                'today': today,
-            }
-            return render(request, "booking/booking_form.html", context)
+        return render(request, 'hotel/booking_form.html')
     else:
         room_number = request.POST.get('room_number')
         start_time = request.POST.get('start_time')
         end_time = request.POST.get('end_time')
 
         try:
-            room = Room.objects.get(number = room_number, id=pk)
+            room = Room.objects.get(number = room_number)
         except ValueError:
             return HttpResponse("Wrong room number", status=400)
         except Room.DoesNotExist:
