@@ -1,6 +1,7 @@
 {% extends "hotel/index.html" %}
-{% block body %}
-    <form method="post" action="{% url 'login' %}">
+{% block content %}
+    <h2 class="text-center">Login form</h2>
+    <form class='text-center' method="post" action="{% url 'login' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>

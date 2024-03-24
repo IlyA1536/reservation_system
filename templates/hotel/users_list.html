@@ -1,14 +1,23 @@
 {% extends 'hotel/index.html' %}
-{% block body %}
+{% block content %}
 <div class = "container">
     <h1>Users:</h1>
-    <ul>
-        {% for user in users %}
-            <li>
-                {{ user }}
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
-</div>
-{% endblock body %}
+{% for user in users %}
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {{ user }}
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {{ user.first_name }}<br>
+                    {{ user.last_name }}<br>
+                    {{ user.email }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

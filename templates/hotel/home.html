@@ -1,0 +1,32 @@
+{% extends 'hotel/index.html' %}
+{% block content %}
+{% load static %}
+<div style="position: relative">
+    <img src={% static "img/Hotel.jpeg"%} width=100% height=100% alt="Hotel">
+    <h2 style="position: absolute; top: 15%; left: 5%">
+        Welcome to
+    </h2>
+    <h1 style="position: absolute; top: 20%; left: 10%">
+        Golden Horizon Hotel
+    </h1>
+</div>
+<br>
+<div style="overflow: auto;">
+    <div style="margin-left: 10px; font-size: 22px">
+        <div style="float: left;"><img src={% static "img/Pool.jpeg"%} width=95% height=60% alt="Pool"></div>
+        "Golden Horizon Hotel" is a luxurious destination nestled in the heart of a picturesque coastal landscape.
+        With its breathtaking views of the azure ocean and golden sands, this hotel offers an unparalleled experience of serenity and indulgence.
+        As you step into the lobby, you are greeted by a sense of grandeur and elegance.
+        The hotel's modern architecture seamlessly blends with traditional accents, creating a harmonious ambiance that captivates every guest.
+        Each room and suite is meticulously designed to provide utmost comfort and style. Adorned with plush furnishings and state-of-the-art amenities, every accommodation offers a sanctuary of relaxation and tranquility.
+        Whether you choose a room overlooking the sparkling ocean or a suite with panoramic views of the lush greenery, you are sure to be enveloped in luxury at every turn.
+        The culinary experience at Golden Horizon Hotel is nothing short of extraordinary. Indulge your senses with a delectable array of international cuisines crafted by our talented chefs.
+        From gourmet dining to casual fare, our restaurants offer a diverse menu to satisfy every palate.
+        <div style="float: left;"><img src={% static "img/Hall.jpeg"%} width=95% height=60% alt="Hall"></div>
+        Unwind and rejuvenate your senses at our world-class spa and wellness center. Pamper yourself with rejuvenating treatments and massages, or take a refreshing dip in the infinity pool overlooking the ocean.
+        For those seeking adventure, the hotel offers a range of recreational activities, from water sports to guided excursions.
+        Whether you're planning a romantic getaway, a family vacation, or a corporate retreat,
+        Golden Horizon Hotel promises an unforgettable experience that will leave you longing to return again and again.
+        Experience the epitome of luxury and hospitality at Golden Horizon Hotel, where every moment is crafted to perfection.</div>
+</div>
+{% endblock %}
