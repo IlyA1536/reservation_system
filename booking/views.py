@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render, redirect
 from .models import Room, Booking
 from django.http import HttpResponse
@@ -62,21 +63,24 @@ def booking_detail(request, pk:int):
 def booking_form(request):
     if request.method == 'GET':
         return render(request, 'hotel/booking_form.html')
-    else:
-        room_number = request.POST.get('room_number')
-        start_time = request.POST.get('start_time')
-        end_time = request.POST.get('end_time')
+    elif request.method == 'POST':
+        room = request.POST.get('room_number')
+        start_time_str = request.POST.get('start_time')
+        end_time_str = request.POST.get('end_time')
 
-        try:
-            room = Room.objects.get(number = room_number)
-        except ValueError:
-            return HttpResponse("Wrong room number", status=400)
-        except Room.DoesNotExist:
-            return HttpResponse("Room does not exist", status=404)
+        start_time = datetime.strptime(start_time_str, '%Y-%m-%dT%H:%M')
+        end_time = datetime.strptime(end_time_str, '%Y-%m-%dT%H:%M')
+
+        if start_time >= end_time:
+            return HttpResponse("Start time must be before end time", status=400)
+
+        if Booking.objects.filter(room=room, start_time__lte=end_time, end_time__gte=start_time).exists():
+            return HttpResponse("Room is already booked for selected dates", status=400)
+
         booking = Booking.objects.create(
-            room = room,
-            user = request.user,
-            start_time = start_time,
-            end_time = end_time,
+            room=room,
+            user=request.user,
+            start_time=start_time,
+            end_time=end_time,
         )
-        return redirect("booking_detail", pk = booking.id)
+        return redirect("booking_detail", pk=booking.id)
